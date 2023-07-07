@@ -143,6 +143,26 @@ def write_event(asset_data, site_name, ew, index, logger):
         logger.info('Writting assets data to Splunk for site={} asset_count={}'.format(site_name, len(asset_data)))
         for asset in asset_data:
             asset['site_name'] = site_name
+            asset['business_owner'] = "Unknown"
+            asset['technical_owner'] = "Unknown"
+            asset['criticality_tier'] = "Unknown"
+            asset['data_classification'] = "Unknown"
+            if 'assetCustom' in asset.keys():
+                if 'fields' in asset['assetCustom'].keys():
+                    for i in range(len(asset['assetCustom']['fields'])):
+                        if "value" in asset['assetCustom']['fields'][i].keys():
+                            val = asset['assetCustom']['fields'][i]['value']
+                        else:
+                           val = "Unknown"
+                        if asset['assetCustom']['fields'][i]['name'] == "Business Owner":
+                            asset['business_owner'] = val
+                        elif asset['assetCustom']['fields'][i]['name'] == "Technical Owner":
+                            asset['technical_owner'] = val
+                        elif asset['assetCustom']['fields'][i]['name'] == "Security Criticality Tier":
+                            asset['criticality_tier'] = val
+                        elif asset['assetCustom']['fields'][i]['name'] == "Data Classification":
+                            asset['data_classification'] = val
+
             event = smi.Event(
                 data=json.dumps(asset),
                 sourcetype=sourcetype,

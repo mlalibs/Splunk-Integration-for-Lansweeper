@@ -118,6 +118,7 @@ class Lansweeper:
 
             if status_code == 400:
             #  and ((response.get('errors', [])[0].get('extensions', {}).get('code') == 'UNAUTHENTICATED') or (response.get('errors', [])[0].get('extensions', {}).get('extensions', {}).get('code') == 'UNAUTHENTICATED')):
+                self.logger.warning("400 status code. response={}".format(response))
                 self.logger.info(
                     'Access token is expired. Calling the refresh token API')
                 status, response = self.get_refresh_token()
@@ -180,8 +181,6 @@ class Lansweeper:
             "operatingSystem.buildRevNumber",
             "operatingSystem.version",
             "operatingSystem.caption",
-            "software.name",
-            "software.version",
             "ipLocation.ipLocation",
             "antiviruses.name",
             "antiviruses.enabled"
