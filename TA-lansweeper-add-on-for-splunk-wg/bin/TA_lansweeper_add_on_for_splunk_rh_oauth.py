@@ -100,7 +100,7 @@ class ta_lansweeper_add_on_for_splunk_rh_oauth2_token(admin.MConfigHandler):
     def getProxyDetails(self):
         # Create confmanger object for the app with realm
         cfm = conf_manager.ConfManager(self.getSessionKey(
-        ), "TA-lansweeper-add-on-for-splunk", realm="__REST_CREDENTIAL__#TA-lansweeper-add-on-for-splunk#configs/conf-ta_lansweeper_add_on_for_splunk_settings")
+        ), "TA-lansweeper-add-on-for-splunk-wg", realm="__REST_CREDENTIAL__#TA-lansweeper-add-on-for-splunk-wg#configs/conf-ta_lansweeper_add_on_for_splunk_settings")
         # Get Conf object of apps settings
         conf = cfm.get_conf('ta_lansweeper_add_on_for_splunk_settings')
         # Get proxy stanza from the settings

@@ -158,6 +158,8 @@ class Lansweeper:
             }, fields: [
             "assetCustom.stateName",
             "assetCustom.serialNumber",
+            "assetCustom.department",
+            "assetCustom.dnsName",
             "assetCustom.fields.name",
             "assetCustom.fields.value",
             "assetBasicInfo.name",

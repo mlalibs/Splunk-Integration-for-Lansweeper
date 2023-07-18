@@ -15,6 +15,6 @@
   ~ limitations under the License.
   ~
 -->
-<view template="TA-lansweeper-add-on-for-splunk:templates/ta-lansweeper-add-on-for-splunk_redirect.html" type="html" isDashboard="False">
-    <label>Redirect</label>
+<view template="TA-lansweeper-add-on-for-splunk-wg:/templates/base.html" type="html" isDashboard="False">
+	<label>Inputs</label>
 </view>
